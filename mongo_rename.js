@@ -19,36 +19,28 @@ if (bool_mode){
 }
 
 if (bool_rename && rename == "y"){
-	if (set_base_value == "y"){
-		print ("*****  changing \"email_id\" => \"email\" and \"pin\" => \"pincode\"")
-		print ("*****  and \"conversion\" => \"rank\" and increase base \"conversion\" value by 100")
-		print ("*****  this will take sometime...")
-		db.parties.updateMany( {}, { $rename: { "email_id": "email","pin": "pincode","conversion": "rank"},$inc: { "conversion": 100 }} ,{
-			allowDiskUse:true,
-			cursor:{}
-			}
-		)
-	}else{
-		print ("*****  changing \"email_id\" => \"email\" and \"pin\" => \"pincode\" and \"conversion\" => \"rank\"")
-		print ("*****  this will take sometime...")
-		db.parties.updateMany( {}, { $rename: { "email_id": "email","pin": "pincode","conversion": "rank"}} ,{
-			allowDiskUse:true,
-			cursor:{}
-			}
-		)
-	}
+	print ("*****  changing \"email_id\" => \"email\" and \"pin\" => \"pincode\" and \"conversion\" => \"rank\"")
+	print ("*****  this will take sometime...")
+	db.parties.updateMany( {}, { $rename: { "email_id": "email","pin": "pincode","conversion": "rank"}} ,{
+		allowDiskUse:true,
+		cursor:{}
+		}
+	)
 	print ("*****  completed")
-}else if (set_base_value == "y"){
-	print ("*****  No email normalization required")
+}else {
+	print ("*****  No email normalization")
+}
+
+if (set_base_value == "y"){
 	print ("*****  increase base \"conversion\" value by 100")
 	print ("*****  this will take sometime...")
-	db.parties.updateMany( {}, {$inc: { "conversion": 100 }} ,{
+	db.parties.updateMany( {}, {$inc: { "rank": 100 }} ,{
 		allowDiskUse:true,
 		cursor:{}
 		}
 	)
 }else {
-	print ("*****  No email normalization required")
+	print ("*****  Not setting base value")
 }
 
 print ("\n*****  checking presence of \"nic_string\" field")
