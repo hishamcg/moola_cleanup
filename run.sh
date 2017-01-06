@@ -43,6 +43,8 @@ function start(){
 	fi
 
 	if [ "$_DB_NAME" ]; then
+		echo "*****  Run rename? y/n (this will rename email_id -> email and pin -> pincode)"
+		read rename
 		echo "*****  Increase the base value of \"conversion\" field? y/n"
 		read inp
 		echo "*****  Run nic update? y/n"
@@ -52,7 +54,7 @@ function start(){
 			read bg_mode
 		fi
 		
-		mongo --quiet --eval "var db_name='$_DB_NAME',mode='$mode',set_base_value='$inp'" mongo_rename.js
+		mongo --quiet --eval "var db_name='$_DB_NAME',mode='$mode',set_base_value='$inp',rename='$rename'" mongo_rename.js
 		
 		# if [ "$inp" == "y" ]; then
 		# 	mongo --quiet --eval "var db_name='$_DB_NAME'" mongo_set_rank_base_value.js

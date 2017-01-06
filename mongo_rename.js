@@ -18,7 +18,7 @@ if (bool_mode){
 	if (db.parties.findOne({"_type":"PrivateCompany"}).email_id){bool_rename = true}
 }
 
-if (bool_rename){
+if (bool_rename && rename == "y"){
 	if (set_base_value == "y"){
 		print ("*****  changing \"email_id\" => \"email\" and \"pin\" => \"pincode\" and increase base \"conversion\" value by 100")
 		print ("*****  this will take sometime...")
