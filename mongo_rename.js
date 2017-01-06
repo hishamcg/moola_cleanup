@@ -19,9 +19,9 @@ if (bool_mode){
 }
 
 if (bool_rename && rename == "y"){
-	print ("*****  changing \"email_id\" => \"email\" and \"pin\" => \"pincode\" and \"conversion\" => \"rank\"")
+	print ("*****  changing \"email_id\" => \"email\" and \"pin\" => \"pin_code\" and \"conversion\" => \"rank\"")
 	print ("*****  this will take sometime...")
-	db.parties.updateMany( {}, { $rename: { "email_id": "email","pin": "pincode","conversion": "rank"}} ,{
+	db.parties.updateMany( {}, { $rename: { "email_id": "email","pin": "pin_code","conversion": "rank"}} ,{
 		allowDiskUse:true,
 		cursor:{}
 		}
