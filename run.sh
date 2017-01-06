@@ -63,7 +63,7 @@ function start(){
 		if [ "$do_nic" == "y" ]; then 
 			echo "*****  Updating industry code and other fields from nic04 and nic 08"
 			if [ "$bg_mode" == "y" ]; then
-				python script/nic_mongo.py "$_DB_NAME" "$bg_mode" &
+				python script/nic_mongo.py "$_DB_NAME" "$bg_mode" & #>/tmp/moola_update 2>&1
 				disown
 			else
 				python script/nic_mongo.py "$_DB_NAME" "$bg_mode"

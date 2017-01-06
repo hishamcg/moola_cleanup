@@ -20,17 +20,18 @@ if (bool_mode){
 
 if (bool_rename && rename == "y"){
 	if (set_base_value == "y"){
-		print ("*****  changing \"email_id\" => \"email\" and \"pin\" => \"pincode\" and increase base \"conversion\" value by 100")
+		print ("*****  changing \"email_id\" => \"email\" and \"pin\" => \"pincode\"")
+		print ("*****  and \"conversion\" => \"rank\" and increase base \"conversion\" value by 100")
 		print ("*****  this will take sometime...")
-		db.parties.updateMany( {}, { $rename: { "email_id": "email","pin": "pincode"},$inc: { "conversion": 100 }} ,{
+		db.parties.updateMany( {}, { $rename: { "email_id": "email","pin": "pincode","conversion": "rank"},$inc: { "conversion": 100 }} ,{
 			allowDiskUse:true,
 			cursor:{}
 			}
 		)
 	}else{
-		print ("*****  changing \"email_id\" => \"email\" and \"pin\" => \"pincode\"")
+		print ("*****  changing \"email_id\" => \"email\" and \"pin\" => \"pincode\" and \"conversion\" => \"rank\"")
 		print ("*****  this will take sometime...")
-		db.parties.updateMany( {}, { $rename: { "email_id": "email","pin": "pincode"}} ,{
+		db.parties.updateMany( {}, { $rename: { "email_id": "email","pin": "pincode","conversion": "rank"}} ,{
 			allowDiskUse:true,
 			cursor:{}
 			}
